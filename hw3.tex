@@ -1,0 +1,44 @@
+\documentclass[a4page]{exam}
+\usepackage{geometry}
+\usepackage[table]{xcolor}
+\usepackage{amsmath, amsfonts}
+
+\newcommand{\Str}[1]{\mathtt{#1}}
+
+\title{Homework 3}
+\author{CS 212 Nature of Computation\\Habib University\\Fall 2021}
+\date{Due: 2359h on Sunday, 14 November}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\noindent\rule{\textwidth}{1pt}
+
+\begin{questions}
+  \question[20] Show that $\{a^i\#a^j | \hspace{1mm}\frac{j}{k} = i \text{ for some positive integer } k\}$ is not context free, providing adequate reasoning for each class of cases of $uvxyz$ .
+
+  
+  \question[20] Show that every infinite Turing-recognizable language has an infinite Turing-decidable subset.
+  
+  \question[20] Show that the class of Turing-recognizable languages is closed under concatenation.
+  
+  \question[20] Design a Turing Machine to decide the language
+  \[
+    L =\{ w w^{\text{rev}} : w \in \{a,b\}^* \},
+  \]
+
+  Your machine must halt on all inputs. Assume that the tape is infinite in both directions, with all characters other than the input initially blank. Give \textbf{both} the high-level idea behind your TM as well as a state diagram drawn in the conventional way. 
+  
+  \question[20] The \texttt{FINITE INPUT ACCEPTANCE PROBLEM} is defined as the problem of deciding whether a given non-deterministic Turing Machine $M$ accepts input $x$ in $\leq k$ steps of computation. Derive an explanation for \texttt{FINITE INPUT ACCEPTANCE PROBLEM} being time-bounded by $O(n^k)$, where $n=|x|$. You will have to assume that the alphabet size is determined on the fly, based on the input.
+  
+
+\end{questions}
+
+\noindent\rule{\textwidth}{1pt}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
