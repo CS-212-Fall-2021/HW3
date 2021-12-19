@@ -239,8 +239,56 @@
   \end{solution}
 
 \question[20] The \texttt{FINITE INPUT ACCEPTANCE PROBLEM} is defined as the problem of deciding whether a given non-deterministic Turing Machine $M$ accepts input $x$ in $\leq k$ steps of computation. Derive an explanation for \texttt{FINITE INPUT ACCEPTANCE PROBLEM} being time-bounded by $O(n^k)$, where $n=|x|$. You will have to assume that the alphabet size is determined on the fly, based on the input.
-  
+  \begin{solution}
+    \textcolor{blue}{Solution taken from the submission by team \textit{prefix}}.\\
+     Let us define a Deterministic Turing Machine, $M_a$ that would solve the FINITE INPUT ACCEPTANCE PROBLEM
+     for a non-deterministic Turing Machine $M$.
+     Such a machine would take in input the string $x$, and simulate the machine $M$ for k steps. 
+     
+     If $M$ is able to accept $x$
+     within k steps, then $M_a$ would go into the accepting state, which would state yes as the answer to the problem otherwise 
+     it would go into the reject state which would proclaim the answer to be no.
+     
+     However, as $M_a$ is a deterministic machine simulating a nondeterministic machine, it would have to simulate
+     each branch at a time, as explained in Theorm 3.16 in chapter 3 of "Introduction to theory of computation - Michael Sipser".
+     
+     So the machine $M_a$ would be performing a breadth first search over all nodes of the computation tree formed by $M$  
+     upto the height $k$. The time taken by the machine, $T$, would be equivalent to the number of nodes it traverses.
 
+
+    \includegraphics[width=.5\textwidth]{computation_tree.png}
+
+
+    Considering the worst case where:\\
+    - The maximum number of branches, $b$, occur in each step\\
+    - The turing Machine $M$ does not accept in $k$ steps\\
+    - $|\Sigma | = |x|$, as it is determined on input\\
+
+    We can calculate the maximum number of branches, $b$:
+    $$ b = |\text{max} \left( \mathcal{P}(Q \times \Gamma \times \{L\times R\}) \right) | $$
+    $$ b = |Q| \times |\Gamma| \times 2 $$
+    $$ b = |Q| \times (|\Sigma| + c) \times 2 \hspace{1mm} $$
+    where $c$ is some arbitary constant representing the fixed number of additional charachter besides of $\Sigma$ 
+    $$ b = 2 |Q| \times (|x| + c)$$
+    $$ b = 2 |Q| \times (n + c)$$
+
+    Then the time time taken by the machine, $T$, would be:
+    $$ T = b^k $$
+    $$ T = (2 |Q| \times (n + c))^k$$
+
+    $$ O(T) = O((2 |Q| \times (n + c))^k)$$
+    $$ O(T) = O(( |Q| \times n)^k)$$
+
+    Let $n > p$, where $p$ is the pumping length of $M$ then $|Q|$ would remain constant as $n \to \infty$,
+    Thus:
+
+    $$ O(T) = O(n^k)$$
+
+    As the machine $M_a$ is time bounded by $O(n^k)$ so would be  the FINITE INPUT ACCEPTANCE PROBLEM.
+
+    Q.E.D
+  \end{solution}
+  
 \end{questions}
 
 \noindent\rule{\textwidth}{1pt}

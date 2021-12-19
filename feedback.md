@@ -1,3 +1,15 @@
+77 of 89 submitted feedback. 69 of 77 found it fun.
+
+Hours
+--
+(min, max) : (5, 60)
+(mean, median, st, dev.) : (16.3, 12, 11.9)
+
+Score
+--
+(min, max) : (, )
+(mean, median, st, dev.) : (, , )
+
 Learned
 --
 
